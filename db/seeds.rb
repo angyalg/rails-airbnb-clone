@@ -9,8 +9,8 @@
 
 5.times do
   users = [
-        { name: Faker::Name.name,
-          role: ['guest', 'host'].sample,
+        { username: Faker::Name.name,
+          password: Faker::Internet.password,
           email: Faker::Internet.email
         }]
   User.create!(users)
