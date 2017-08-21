@@ -189,8 +189,8 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
-  faker
   devise
+  faker
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
@@ -213,4 +213,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.15.1
+   1.15.3
