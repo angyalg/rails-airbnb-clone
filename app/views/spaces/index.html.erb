@@ -1,1 +1,12 @@
-<h1>Index</h1>
+<h1>Spaces#Index</h1>
+
+<% @spaces.each do |space| %>
+  <h2>Name: <%= link_to space.name, space_path(space) %></h2>
+  <p>Description: <%= space.description %></p><br>
+  <p>Max capacity: <%= space.max_capacity %></p><br>
+  <p>Price per day: <%= space.price_per_day %></p><br>
+  <p>User id: <%= space.user_id %></p>
+  <h3><%= link_to 'Book', new_space_booking_path(space) %></h3>
+  <br><br>
+<% end %>
+
