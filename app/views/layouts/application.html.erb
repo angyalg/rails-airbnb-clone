@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TODO</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-  </head>
-  <body>
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TODO</title>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <%= render 'shared/flashes' %>
+  <div class="navbar-wagon">
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+    <% end %>
+
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+      <% if user_signed_in? %>
+
+      <!-- Links when logged in -->
+      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to "#" do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+              <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+    </div>
+
+    <!-- Dropdown list appearing on mobile only -->
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Some mobile link</a></li>
+          <li><a href="#">Other one</a></li>
+          <li><a href="#">Other one</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <%= yield %>
+  <%= javascript_include_tag 'application' %>
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      This footer is made with <i class="fa fa-heart"></i> at Le Wagon
+    </div>
+  </div>
+  <%= javascript_include_tag 'application' %>
+</body>
 </html>

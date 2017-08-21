@@ -1,1 +1,9 @@
-<h1>Show</h1>
+<h1>Space#Show</h1>
+
+<h2>Name: <%= @space.name %></h2>
+<p>Description: <%= @space.description %></p><br>
+<p>Max capacity: <%= @space.max_capacity %></p><br>
+<p>Price per day: <%= @space.price_per_day %></p><br>
+<p>User id: <%= @space.user_id %></p><br><br>
+
+<%= link_to 'Back to Spaces#Index', spaces_path %>

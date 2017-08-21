@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  has_many :spaces
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :bookings
+  has_many :spaces
 
-  validates :name, presence: true, length: { minimum: 5 }
-  validates :email, presence: true, length: { minimum: 5 }
-  validates :role, presence: true, inclusion: { in: ['guest', 'host'] }
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end
