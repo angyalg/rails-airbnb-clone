@@ -5,7 +5,6 @@ class CreateSpaces < ActiveRecord::Migration[5.1]
       t.text :description
       t.integer :max_capacity
       t.integer :price_per_day
-      t.references :user, foreign_key: true
 
       t.timestamps
     end
