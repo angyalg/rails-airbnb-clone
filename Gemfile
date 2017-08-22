@@ -3,10 +3,17 @@ ruby '2.3.4'
 
 gem 'faker'
 
+gem "geocoder"
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
