@@ -3,7 +3,7 @@
 <p>start_date: <%= @booking.start_date %></p>
 <p>end_date: <%= @booking.end_date %></p>
 <p>status: <%= @booking.status %></p>
-<p>space_id: <%= @booking.space_id %></p>
-<p>user_id: <%= @booking.user_id %></p>
+<p>space name: <%= @booking.space.name %></p>
+<p>user name: <%= @booking.user.username %></p>
 
 <%= link_to 'Show all', space_bookings_path %>

@@ -6,6 +6,10 @@
 <p>Price per day: <%= @space.price_per_day %></p><br>
 <p>User id: <%= @space.user_id %></p><br><br>
 
+<%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
+
+<br>
+
 <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
 
 <br>
