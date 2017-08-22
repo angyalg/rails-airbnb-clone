@@ -3,6 +3,10 @@ ruby '2.3.4'
 
 gem 'faker'
 
+gem 'cloudinary'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
