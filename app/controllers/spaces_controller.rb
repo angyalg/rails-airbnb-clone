@@ -1,14 +1,22 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    # @spaces = Space.all
+    @spaces = Space.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+      marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
+    end
   end
 
   def show
     @space = Space.find(params[:id])
+    @space_coordinates = { lat: @space.latitude, lng: @space.longitude }
   end
 
   def new
-    @space = Space.new()
+    @space = Space.new
   end
 
   def create
@@ -33,6 +41,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:name, :description, :max_capacity, :price_per_day, photos: [])
+    params.require(:space).permit(:name, :description, :latitude, :longitude, :max_capacity, :price_per_day, :address, photos: [])
   end
 end

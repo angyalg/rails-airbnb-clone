@@ -11,3 +11,20 @@
 <br>
 
 <%= link_to 'Back to Spaces#Index', spaces_path %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      alert('<%= @alert_message %>');
+    });
+  <% end %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var coord = <%= raw @space_coordinates.to_json %>;
+      alert('Space coordinates are ' + coord.lat + ', ' + coord.lng);
+    });
+  <% end %>
+<% end %>
