@@ -6,6 +6,13 @@
   </div>
 </div>
 
+<%= simple_form_for(:search, method: 'get', url: spaces_path) do |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.input :location %>
+  <%= f.submit %>
+<% end %>
+
 <%= link_to 'All spaces', spaces_path %> <br>
 
 <%= link_to destroy_user_session_path, method: :delete do %>

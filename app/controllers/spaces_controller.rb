@@ -1,6 +1,10 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    if params[:search]
+      @spaces = Space.left_outer_joins(:bookings).where.not('start_date > ? AND end_date < ?', params[:search][:end_date], params[:search][:start_date])
+    else
+      @spaces = Space.all
+    end
   end
 
   def show
