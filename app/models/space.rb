@@ -1,4 +1,5 @@
 class Space < ApplicationRecord
+  has_attachments :photos, maximum: 5
   belongs_to :user
   has_many :bookings
 
