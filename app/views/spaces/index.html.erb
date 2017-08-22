@@ -1,12 +1,25 @@
-<h1>Spaces#Index</h1>
+<div class="container">
+<h1>Explore our Catalogue</h1>
+  <div class="row no-gutters">
+    <% @spaces.each do |space| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>);">
+        <%= link_to space_path(space), class: "card-link" do %>
+        <% end %>
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <p>Description: <%= space.description %></p>
+        </div>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/tgenaitay", class: "card-user" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<% @spaces.each do |space| %>
-  <h2>Name: <%= link_to space.name, space_path(space) %></h2>
-  <p>Description: <%= space.description %></p><br>
-  <p>Max capacity: <%= space.max_capacity %></p><br>
-  <p>Price per day: <%= space.price_per_day %></p><br>
-  <p>User id: <%= space.user_id %></p>
-  <h3><%= link_to 'Book', new_space_booking_path(space) %></h3>
-  <br><br>
-<% end %>
-
+<!-- <h2>Name: <%#= link_to space.name, space_path(space) %></h2>
+  <p>Description: <%#= space.description %></p><br> -->
+  <!-- <p>Max capacity: <%#= space.max_capacity %></p><br> -->
+  <!-- <p>Price per day: <%#= space.price_per_day %></p><br> -->
+  <!-- <p>User id: <%#= space.user_id %></p> -->
+  <!-- <h3><#%= link_to 'Book', new_space_booking_path(space) %></h3> -->
