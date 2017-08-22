@@ -1,10 +1,10 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.where(user_id: current_user.id)
+    @spaces = Space.all
   end
 
   def show
-    @space = Space.where(user_id: current_user.id).find(params[:id])
+    @space = Space.find(params[:id])
   end
 
   def new
