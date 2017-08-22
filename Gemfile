@@ -20,6 +20,8 @@ gem 'uglifier'
 
 # gem for autentication
 gem 'devise'
+# facebook login
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry-byebug'
