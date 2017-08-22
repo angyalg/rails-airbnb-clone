@@ -1,12 +1,17 @@
 class SpacesController < ApplicationController
   def index
-    # @spaces = Space.all
-    @spaces = Space.where.not(latitude: nil, longitude: nil)
+    @spaces_for_map = Space.where.not(latitude: nil, longitude: nil)
 
-    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+    @hash = Gmaps4rails.build_markers(@spaces_for_map) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
       marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
+    end
+
+    if params[:search]
+      @spaces = Space.left_outer_joins(:bookings).where.not('start_date > ? AND end_date < ?', params[:search][:end_date], params[:search][:start_date])
+    else
+      @spaces = Space.all
     end
   end
 
