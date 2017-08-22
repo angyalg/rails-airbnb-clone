@@ -7,11 +7,21 @@
         <%= link_to space_path(space), class: "card-link" do %>
         <% end %>
         <div class="card-category">Popular</div>
-        <div class="card-description">
+        <!-- <div class="card-description">
           <p>Description: <%= space.description %></p>
-        </div>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/tgenaitay", class: "card-user" %>
+        </div> -->
+        <%= image_tag "cards/heart", class: "card-icon" %>
       </div>
+      <div class="infobox">
+
+      </div>
+      <span class="headline"><%= space.price_per_day%>€</span>
+      <span class="headline"><%= truncate(space.description, length: 23)%></span>
+      <br>
+      <% (0..5).to_a.sample.times do %>
+        <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
+      <% end %>
+      <br>
     </div>
     <% end %>
   </div>
