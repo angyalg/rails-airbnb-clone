@@ -10,12 +10,8 @@
       <%= f.input :email, required: true, autofocus: true, placeholder: "example@gmail.com" %>
 <!-- Inside Form to get the same size as input fields (buttons with the links) -->
       <div class="button-column">
-        <%= render "devise/shared/links" %>
+        <%= f.button :submit, "Reset password", class: "btn btn-danger" %>
       </div>
-    </div>
-<!-- reset Button-->
-    <div class="form-actions">
-      <%= f.button :submit, "Reset password" %>
     </div>
   <% end %>
   </div>

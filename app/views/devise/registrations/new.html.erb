@@ -14,14 +14,14 @@
       <%= f.input :password_confirmation, required: true, placeholder: "*" * 6 %>
 
 <!-- Inside Form to get the same size as input fields (buttons with the links) -->
+      <div class="button-column">
+      <!-- Sign up Button-->
+          <%= f.button :submit, "Sign up", class: "btn btn-danger" %>
+          <%= render "devise/shared/fblink"%>
+      </div>
+    </div>
     <div class="button-column">
         <%= render "devise/shared/links" %>
-    </div>
-    </div>
-
-<!-- Sign up Button-->
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
     </div>
   </div>
   <% end %>
