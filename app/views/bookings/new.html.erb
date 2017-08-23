@@ -1,12 +1,15 @@
-<h1>Bookings#New</h1>
+<div class="page-wrapper">
 
-<div class="image-cover" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>)">
+  <h1>Bookings#New</h1>
+
+  <div class="image-cover" style="background-image:  url(<%= image_path 'eventspaces/exp1' %>);">
+  </div>
+
+  <%= simple_form_for([@space, @booking]) do |f| %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to 'Back to Spaces#Index', spaces_path %>
 </div>
-
-<%= simple_form_for([@space, @booking]) do |f| %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.submit %>
-<% end %>
-
-<%= link_to 'Back to Spaces#Index', spaces_path %>
