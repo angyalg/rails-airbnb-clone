@@ -6,9 +6,11 @@
 <p>Price per day: <%= @space.price_per_day %></p><br>
 <p>User id: <%= @space.user_id %></p><br><br>
 
-<% @product.photos.each do |photo| %>
+<% @space.photos.each do |photo| %>
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
+
+<br>
 
 <%= link_to 'Edit this space', edit_space_path(@space) %>
 
