@@ -1,28 +1,41 @@
-<h1>Space#Show</h1>
+<div class="page-wrapper">
 
-<h2>Name: <%= @space.name %></h2>
-<p>Description: <%= @space.description %></p><br>
-<p>Max capacity: <%= @space.max_capacity %></p><br>
-<p>Price per day: <%= @space.price_per_day %></p><br>
-<p>User id: <%= @space.user_id %></p><br><br>
+  <h1>Space#Show</h1>
 
-<% @space.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
+  <% @space.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
 
-<br>
+  <br>
 
-<%= link_to 'Edit this space', edit_space_path(@space) %>
+  <%= link_to 'Edit this space', edit_space_path(@space) %>
 
-<br>
+  <br>
 
-<%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
+  <%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
 
-<br>
+  <h2>Name: <%= @space.name %></h2>
+  <p>Description: <%= @space.description %></p><br>
+  <p>Max capacity: <%= @space.max_capacity %></p><br>
+  <p>Price per day: <%= @space.price_per_day %></p><br>
+  <p>User id: <%= @space.user_id %></p><br><br>
 
-<%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
+  <div class="button-column">
+    <div class="page-wrapper">
+    <div class="btn btn-default">
+        <%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
+    </div>
 
-<br>
+      <br>
+      <div class="btn btn-default">
+        <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
+      </div>
 
-<%= link_to 'Back to Spaces#Index', spaces_path %>
+      <br>
+      <div class="btn btn-default">
+        <%= link_to 'Back to Spaces#Index', spaces_path %>
+      </div>
+    </div>
+  </div>
+</div>
 

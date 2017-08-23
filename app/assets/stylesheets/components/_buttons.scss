@@ -26,4 +26,8 @@ a:hover {
     border-color: #1e6eb2;
 }
 
-
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
