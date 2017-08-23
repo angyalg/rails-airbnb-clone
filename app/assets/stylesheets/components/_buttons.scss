@@ -30,3 +30,8 @@ a:hover {
   margin-top: 15px;
 }
 
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
