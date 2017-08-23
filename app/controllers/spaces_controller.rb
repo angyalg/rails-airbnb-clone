@@ -1,27 +1,32 @@
 class SpacesController < ApplicationController
   def index
-    @spaces_for_map = Space.where.not(latitude: nil, longitude: nil)
+    # unless params[:search]
+    #   @spaces = Space.all
+    # end
 
-    @hash = Gmaps4rails.build_markers(@spaces_for_map) do |space, marker|
+    begin
+      start_date = Date.parse(params[:search][:start_date])
+      end_date = Date.parse(params[:search][:end_date])
+    rescue ArgumentError
+
+    end
+
+    if (start_date.is_a?(Date) && end_date.is_a?(Date))
+      @date_selected_spaces = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', start_date, end_date)
+      @spaces = (@spaces.nil? ? Space.all : @spaces) - @date_selected_spaces
+    else
+      @spaces = Space.all
+    end
+
+    unless params[:search][:location].empty?
+      @spaces = @spaces.select { |space| space.address == params[:search][:location] }
+    end
+
+    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
       marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
     end
-
-    unless params[:search]
-      @spaces = Space.all
-      return
-    end
-
-    begin
-       start_date = Date.parse(params[:search][:start_date])
-       end_date = Date.parse(params[:search][:end_date])
-       @spaces_what_overlap = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', params[:search][:end_date], params[:search][:start_date])
-       @spaces = Space.all - @spaces_what_overlap
-    rescue ArgumentError
-       @spaces = Space.all
-    end
-
   end
 
   def show

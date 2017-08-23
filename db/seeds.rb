@@ -6,29 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-5.times do
-  users = [
-        { username: Faker::Name.name,
-          password: Faker::Internet.password,
-          email: Faker::Internet.email
+users_attributes = [
+        { username: 'test1',
+          password: '123456',
+          password_confirmation: '123456',
+          email: 'test11111@test.com'
+        },
+        { username: 'test2',
+          password: '123456',
+          password_confirmation: '123456',
+          email: 'test22222@test.com'
+        },
+        {
+          username: 'test3',
+          password: '123456',
+          password_confirmation: '123456',
+          email: 'test33333@test.com'
         }]
-  User.create!(users)
-end
+users_attributes.each { |user| User.create!(user) }
 
-10.times do
+
+9.times do
   spaces = [
            { name: Faker::Company.name,
              description: Faker::Lorem.sentence,
-             max_capacity: (10..50).to_a.sample,
-             price_per_day: (500..1000).to_a.sample,
+             max_capacity: (1..20).to_a.sample*10,
+             price_per_day: (30..90).to_a.sample*10,
              user_id: (1..5).to_a.sample,
-             address: Faker::Address.city
+             address: ['Berlin', 'Paris', 'London'].sample
            }]
   Space.create!(spaces)
 end
 
-bookings = [
+bookings_attributes = [
            {
               start_date: Time.parse("01-01-2017"),
               end_date: Time.parse("11-01-2017"),
@@ -51,6 +61,6 @@ bookings = [
               user_id: (1..5).to_a.sample
            }]
 
-bookings.each do |b|
+bookings_attributes.each do |b|
   Booking.create!(b)
 end
