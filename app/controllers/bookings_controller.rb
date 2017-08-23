@@ -1,13 +1,12 @@
 class BookingsController < ApplicationController
   before_action :set_space, only: [:new, :create, :index]
-  before_action :set_booking, only: [:show]
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.where(user_id: current_user.id).where(space_id: params[:space_id])
   end
 
   def show
-
+    @booking = Booking.where(user_id: current_user.id).find(params[:id])
   end
 
   def new
@@ -39,10 +38,6 @@ class BookingsController < ApplicationController
 
   def set_space
     @space = Space.find(params[:space_id])
-  end
-
-  def set_booking
-    @booking = Booking.where(user_id: current_user.id).find(params[:id])
   end
 
   def booking_params
