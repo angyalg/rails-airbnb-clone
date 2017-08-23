@@ -6,25 +6,13 @@
 <p>Price per day: <%= @space.price_per_day %></p><br>
 <p>User id: <%= @space.user_id %></p><br><br>
 
+<%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
+
+<br>
+
 <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
 
 <br>
 
 <%= link_to 'Back to Spaces#Index', spaces_path %>
 
-<%# content_for(:after_js) do %>
-  <%#= javascript_tag do %>
-    <!-- $(document).ready(function() { -->
-      <!-- alert('<%= @alert_message %>'); -->
-    <!-- }); -->
-  <%# end %>
-<%# end %>
-
-<%# content_for(:after_js) do %>
-  <%#= javascript_tag do %>
-   <!--  $(document).ready(function() {
-      var coord = <%= raw @space_coordinates.to_json %>;
-      alert('Space coordinates are ' + coord.lat + ', ' + coord.lng);
-    }); -->
-  <%# end %>
-<%# end %>
