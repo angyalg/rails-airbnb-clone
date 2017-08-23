@@ -8,11 +8,20 @@ class SpacesController < ApplicationController
       marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
     end
 
-    if params[:search]
-      @spaces = Space.left_outer_joins(:bookings).where.not('start_date > ? AND end_date < ?', params[:search][:end_date], params[:search][:start_date])
-    else
+    unless params[:search]
       @spaces = Space.all
+      return
     end
+
+    begin
+       start_date = Date.parse(params[:search][:start_date])
+       end_date = Date.parse(params[:search][:end_date])
+       @spaces_what_overlap = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', params[:search][:end_date], params[:search][:start_date])
+       @spaces = Space.all - @spaces_what_overlap
+    rescue ArgumentError
+       @spaces = Space.all
+    end
+
   end
 
   def show
