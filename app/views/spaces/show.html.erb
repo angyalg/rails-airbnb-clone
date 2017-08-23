@@ -2,8 +2,17 @@
 
   <h1>Space#Show</h1>
 
-  <div class="image-cover" style="background-image:  url(<%= image_path 'eventspaces/exp1' %>);">
-  </div>
+  <% @space.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
+
+  <br>
+
+  <%= link_to 'Edit this space', edit_space_path(@space) %>
+
+  <br>
+
+  <%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
 
   <h2>Name: <%= @space.name %></h2>
   <p>Description: <%= @space.description %></p><br>
