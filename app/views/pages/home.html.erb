@@ -2,19 +2,14 @@
   <div class="banner-content">
     <h1>Find your space</h1>
     <p>Be inspired to meet, create, innovate </p>
-    <div class=""
+    <div class="form-inline">
+      <%= simple_form_for(:search, method: 'get', url: spaces_path, html: { class: "form-inline-search" }) do |f| %>
+        <%= f.input :start_date, as: :date, html5: true, label: false %>
+        <%= f.input :end_date, as: :date, html5: true, label: false %>
+        <%= f.input :location, html5: true, label_html: { class: "location_input" }, label: false, placeholder: "Location" %>
+        <%= f.button :submit, 'Search' %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<div class="form-inline">
-  <%= simple_form_for(:search, method: 'get', url: spaces_path) do |f| %>
-    <%= f.input :start_date, as: :date, html5: true, label: false %>
-    <%= f.input :end_date, as: :date, html5: true, label: false %>
-    <%= f.input :location, html5: true, label_html: { class: "location_input" }, label: false, placeholder: "Location" %>
-    <%= f.button :submit, 'Search' %>
-  <% end %>
-</div>
-
-<% end %>
-
 
