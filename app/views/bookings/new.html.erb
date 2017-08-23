@@ -2,16 +2,18 @@
 
   <h1>Bookings#New</h1>
 
-<%= link_to 'Back to Spaces#Index', spaces_path, class: "btn btn-default" %>
+
   <div class="image-cover" style="background-image:  url(<%= image_path 'eventspaces/exp1' %>);">
   </div>
 
   <%= simple_form_for([@space, @booking]) do |f| %>
+  <div class="page-wrapper">
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>
     <%= f.submit %>
+  </div>
   <% end %>
 
-  <%= link_to 'Back to Spaces#Index', spaces_path %>
+<%= link_to 'Back to Spaces#Index', spaces_path, class: "btn btn-default" %>
 </div>
 
