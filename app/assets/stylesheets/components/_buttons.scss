@@ -1,0 +1,29 @@
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+  color:white;
+  text-decoration: none;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-primary {
+  background-color: #3b5998;
+  border-color: #303e4a;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #000000;
+    border-color: #1e6eb2;
+}
+
+

@@ -1,10 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :set_space, only: [:new, :create]
+  before_action :set_space, only: [:new, :create, :index]
 
   def index
+    @bookings = Booking.where(user_id: current_user.id).where(space_id: params[:space_id])
   end
 
   def show
+    @booking = Booking.where(user_id: current_user.id).find(params[:id])
   end
 
   def new
@@ -13,8 +15,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.status = 'pending'
+    @booking.space = @space
+    @booking.user = current_user
     if @booking.save
-      redirect_to space_booking_path(@booking)
+      redirect_to space_booking_path(@space, @booking)
     else
       render :new
     end
@@ -33,10 +38,6 @@ class BookingsController < ApplicationController
 
   def set_space
     @space = Space.find(params[:space_id])
-  end
-
-  def set_booking
-    @booking = Booking.find(params[:id])
   end
 
   def booking_params

@@ -1,9 +1,8 @@
-<h1>Spaces#New</h1>
-
 <%= simple_form_for @space do |f| %>
   <%= f.input :name, label: 'Name your place', error: 'Name is mandatory, please specify one' %>
   <%= f.input :description, hint: 'What makes your place special?' %>
   <%= f.input :max_capacity, placeholder: '35 Guests' %>
   <%= f.input :price_per_day, placeholder: '225€' %>
+  <%= f.input :photos, as: :attachinary %>
   <%= f.button :submit %>
 <% end %>

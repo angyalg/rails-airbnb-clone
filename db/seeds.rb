@@ -22,7 +22,8 @@ end
              description: Faker::Lorem.sentence,
              max_capacity: (10..50).to_a.sample,
              price_per_day: (500..1000).to_a.sample,
-             user_id: (1..5).to_a.sample
+             user_id: (1..5).to_a.sample,
+             address: Faker::Address.city
            }]
   Space.create!(spaces)
 end
