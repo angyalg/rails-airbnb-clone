@@ -1,0 +1,15 @@
+.space-stats {
+  margin:30px;
+  display:flex;
+  flex-direction:row;
+  width:300px;
+  height:80px;
+  padding:5px;
+
+}
+
+.space-stat {
+  flex:1 1 auto;
+  text-align:center;
+  margin:5px;
+}
