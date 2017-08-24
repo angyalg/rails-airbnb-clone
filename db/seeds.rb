@@ -10,18 +10,18 @@ users_attributes = [
         { username: 'test1',
           password: '123456',
           password_confirmation: '123456',
-          email: 'test11111@test.com'
+          email: Faker::Internet.email
         },
         { username: 'test2',
           password: '123456',
           password_confirmation: '123456',
-          email: 'test22222@test.com'
+          email: Faker::Internet.email
         },
         {
           username: 'test3',
           password: '123456',
           password_confirmation: '123456',
-          email: 'test33333@test.com'
+          email: Faker::Internet.email
         }]
 users_attributes.each { |user| User.create!(user) }
 
@@ -33,7 +33,8 @@ users_attributes.each { |user| User.create!(user) }
              max_capacity: (1..20).to_a.sample*10,
              price_per_day: (30..90).to_a.sample*10,
              user_id: (1..5).to_a.sample,
-             address: ['Berlin', 'Paris', 'London'].sample
+             address: ['Berlin', 'Paris', 'London', 'Budapest'].sample,
+             category: ['office', 'creative', 'meeting', 'event', 'retail'].sample
            }]
   Space.create!(spaces)
 end
