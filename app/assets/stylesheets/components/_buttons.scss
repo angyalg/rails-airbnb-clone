@@ -1,12 +1,4 @@
-a {
-    color: blue;
-    text-decoration: none;
-}
 
-a:hover {
-  color:white;
-  text-decoration: none;
-}
 
 .button-column {
   display: flex;
@@ -35,3 +27,14 @@ a:hover {
   flex-direction: row;
   justify-content: space-around;
 }
+
+.btn-submit {
+  width: 55%;
+  background-color: #39ab42;
+  color: white;
+}
+
+ .btn-submit:hover{
+    background-color: #39ab49;
+    color: white;
+  }
