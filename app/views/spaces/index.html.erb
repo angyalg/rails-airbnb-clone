@@ -1,71 +1,75 @@
-<div class="main-container">
-
-  <!-- <div class="container"> -->
+<div class="container">
+  <div class="main-container">
 
     <div class="cards-container">
+
       <div class="row no-gutters">
 
-      <h1>Explore our Catalogue</h1>
+        <h1>Explore our Catalogue</h1>
 
         <% @spaces.each do |space| %>
 
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+          <div class="col-xs-12 col-sm-6">
 
             <% if space.photos? %>
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path space.photos.first.path, height: 300, width: 400, crop: :fill %>')">
+
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path space.photos.first.path, height: 300, width: 400, crop: :fill %>')"></div>
+
             <% else %>
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>);">
+
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>);"></div>
+
             <% end %>
 
-              <%= link_to space_path(space), class: "card-link" do %>
-              <% end %>
+            <%= link_to space_path(space), class: "card-link" do %>
+            <% end %>
 
-              <div class="card-category"><%= space.category.capitalize %> space</div>
+            <div class="card-category">
+              <%= space.category.capitalize %> space
             </div>
 
-              <div class="infobox"></div>
-              <span class="headline"><%= space.price_per_day %>€</span>
-              <span class="headline"><%= space.name %></span>
+            <div class="infobox"></div>
+            <span class="headline"><%= space.price_per_day %>€</span>
+            <span class="headline"><%= space.name %></span>
 
-              <br>
-              <!--
-              <% (0..5).to_a.sample.times do %>
-                <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
-              <% end %>
-               -->
-               <br>
           </div>
 
         <% end %>
 
       </div>
-    </div>
 
-    <div id="map"></div>
+    </div>
+      <div id="map"></div>
+
+  </div>
+</div>
+
+
+
 
   <!-- </div> -->
 
 
   <!-- style="width: 100%; height: 600px;" -->
 
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
       });
-    <% end %>
+    });
   <% end %>
-</div>
+<% end %>
+
 
 <!-- <h2>Name: <%#= link_to space.name, space_path(space) %></h2>
   <p>Description: <%#= space.description %></p><br> -->
