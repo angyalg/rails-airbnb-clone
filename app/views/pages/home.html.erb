@@ -10,6 +10,7 @@
         <%= f.input :start_date, as: :date, html5: true, label: false %>
         <%= f.input :end_date, as: :date, html5: true, label: false %>
         <%= f.input :location, html5: true, label_html: { class: "location_input" }, label: false, placeholder: "Location" %>
+        <%= f.input :category, collection: Space.select(:category).map(&:category).uniq, prompt: 'Choose one', label: false %>
         <%= f.button :submit, 'Search' %>
       <% end %>
     </div>

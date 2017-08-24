@@ -5,23 +5,34 @@ class SpacesController < ApplicationController
     #   @spaces = Space.all
     # end
 
-    begin
-      start_date = Date.parse(params[:search][:start_date])
-      end_date = Date.parse(params[:search][:end_date])
-    rescue ArgumentError
+    unless params[:search].nil?
 
-    end
+      begin
+        start_date = Date.parse(params[:search][:start_date])
+        end_date = Date.parse(params[:search][:end_date])
+      rescue ArgumentError
 
-    if (start_date.is_a?(Date) && end_date.is_a?(Date))
-      @date_selected_spaces = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', start_date, end_date)
-      @spaces = (@spaces.nil? ? Space.all : @spaces) - @date_selected_spaces
+      end
+
+      if (start_date.is_a?(Date) && end_date.is_a?(Date))
+        @date_selected_spaces = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', start_date, end_date)
+        @spaces = (@spaces.nil? ? Space.all : @spaces) - @date_selected_spaces
+      else
+        @spaces = Space.all
+      end
+
+      unless params[:search][:location].empty?
+        @spaces = @spaces.select { |space| space.address == params[:search][:location].capitalize }
+      end
+
+      unless params[:search][:category].empty?
+        @spaces = @spaces.select { |space| space.category == params[:search][:category] }
+      end
     else
       @spaces = Space.all
     end
 
-    unless params[:search][:location].empty?
-      @spaces = @spaces.select { |space| space.address == params[:search][:location] }
-    end
+
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
@@ -29,6 +40,8 @@ class SpacesController < ApplicationController
       marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
     end
   end
+
+
 
   def show
     @space = Space.find(params[:id])
