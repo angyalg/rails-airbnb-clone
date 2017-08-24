@@ -1,12 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_space, only: [:new, :create, :index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @bookings = Booking.where(user_id: current_user.id).where(space_id: params[:space_id])
+    @bookings = Booking.where(space_id: params[:space_id])
   end
 
   def show
-    @booking = Booking.where(user_id: current_user.id).find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def new
