@@ -1,30 +1,17 @@
-<h1>Dashboard</h1>
+<h1>My Bookings</h1>
 
 <div class="container">
-<h1>My spaces</h1>
   <div class="row no-gutters">
-    <% @spaces.each do |space| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>);">
-        <%= link_to space_path(space), class: "card-link" do %>
-        <% end %>
-        <div class="card-category">Popular</div>
-        <!-- <div class="card-description">
-          <p>Description: <%= space.description %></p>
-        </div> -->
-        <%= image_tag "cards/heart", class: "card-icon" %>
-      </div>
-      <div class="infobox">
-
-      </div>
-      <span class="headline"><%= space.price_per_day%>€</span>
-      <span class="headline"><%= truncate(space.description, length: 23)%></span>
-      <br>
-      <% (0..5).to_a.sample.times do %>
-        <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
+    <% if @bookings.any? %>
+      <% @bookings.each do |b| %>
+        <p>start_date: <%= b.start_date %></p>
+        <p>end_date: <%= b.end_date %></p>
+        <p>status: <%= b.status %></p>
+        <p>space_id: <%= b.space_id %></p>
+        <p>user_id: <%= b.user_id %></p>
       <% end %>
-      <br>
-    </div>
+    <% else %>
+      <p>Sorry, there's no booking for this user.</p>
     <% end %>
   </div>
 </div>
