@@ -1,37 +1,12 @@
-a {
-    color: blue;
-    text-decoration: none;
-}
-
-a:hover {
-  color:white;
+.btn, a {
+  border-radius: 10px;
+  color: $green;
   text-decoration: none;
-}
 
-.button-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.btn-primary {
-  background-color: #3b5998;
-  border-color: #303e4a;
-  font-weight: 600;
-}
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #000000;
-    border-color: #1e6eb2;
-}
-
-.margin-top {
-  margin-top: 15px;
-}
-
-.button-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  &:hover {
+   color: white;
+   text-decoration: none;
+   background-color: $green;
+   transition: 1000ms ease 0ms;
+  }
 }
