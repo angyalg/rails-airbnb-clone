@@ -4,4 +4,9 @@ class PagesController < ApplicationController
     @booking = Booking.new
     @space = Space.new
   end
+
+  def test
+    @booking = Booking.new
+    @space = Space.new
+  end
 end
