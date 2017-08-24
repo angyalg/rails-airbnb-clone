@@ -1,35 +1,113 @@
 <div class="page-wrapper">
 
-  <% if @space.photos? %>
-    <div><%= cl_image_tag @space.photos.first.path, height: 300, width: 400, crop: :fill %></div>
+ <% if @space.photos? %>
+    <div><%= cl_image_tag @space.photos.first.path, height: 300, width: 400, crop: :fill, class: "image_wide" %></div>
   <% else %>
-   <div> <%= image_path 'eventspaces/exp1' %></div>
+    <div><%= image_tag 'eventspaces/exp1', class: "image_wide" %></div>
   <% end %>
-
-
 
   <br>
 
-  <h2>Name: <%= @space.name %></h2>
-  <p>Description: <%= @space.description %></p><br>
-  <p>Max capacity: <%= @space.max_capacity %></p><br>
-  <p>Price per day: <%= @space.price_per_day %></p><br>
-  <p>User id: <%= @space.user_id %></p><br><br>
+  <div class="content-container">
 
-  <div class="button-column">
-    <div class="page-wrapper">
-    <div class="btn btn-default">
-        <%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
-    </div>
+    <div class="row no-gutters">
 
-      <br>
-      <div class="btn btn-default">
-        <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
-      </div>
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-      <br>
-      <div class="btn btn-default">
-        <%= link_to 'Back to Spaces#Index', spaces_path %>
+        <h2><%= @space.name %></h2>
+
+        <div class="space-stats">
+          <ul class="list-inline">
+
+            <li>
+              <i class="fa fa-users" aria-hidden="true"></i>
+            </li>
+
+            <li>
+              <h5><%= @space.max_capacity %></h5>
+            </li>
+
+            <li>
+              <i class="fa fa-eur price-tag" aria-hidden="true"></i>
+            </li>
+
+            <li>
+              <h5><%= @space.price_per_day %></h5>
+            </li>
+
+            <li>
+              <!--Avatar, Replace with user image-->
+              <%= image_tag "http://placehold.it/50x50" %>
+            </li>
+
+            <li class="float-right">
+              <div class="btn btn-default">
+                <%= link_to 'Book your Spacey!', new_space_booking_path(@space) %>
+              </div>
+            </li>
+
+           </ul>
+          </div>
+
+
+            <!--Rating, Replace with real ratings later-->
+          <% (3..5).to_a.sample.times do %>
+             <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
+          <% end %>
+
+
+
+
+        <p>Description: <%= @space.description %></p>
+        filler:
+        Located in the coffee region, in the Andean mountains of Colombia, South America, a charming cabana made from bamboo, with a great view and a "sendero" or pathway through the bamboo forest which criss-crosses our 5 acre organic farm, leading down to a stream. A place to relax and commune with nature.
+
+        Der Wohnraum
+
+        Umgeben von wunderschönen Regenwald-Pflanzen, strategisch platziert für Privatsphäre, mit einer Außendusche in einem Garten. Kommune mit der Natur, höre Grillen und Nacht und Vögel am Morgen. Auf einem kleinen Bio-Bauernhof gelegen. Wir wachsen tropische Früchte und Bäume, Blumen, mit Aloe Vera als unsere wichtigste Ernte. Es gibt einen bezaubernden Weg durch unseren Bambuswald, der hinunter zu einem Gebirgsbach und einem kleinen Wasserfall führt. In der Nähe von vielen Kaffee-Region Touren und Attraktionen, einschließlich unserer eigenen Bio-Landwirtschaft Workshops, besuchen Sie eine nahe gelegene Biene Bauernhof, wo unsere Nachbarin Bienen in Gefahr des Aussterbens, lokale Kaffee-Touren, Schmetterling Emporium, Drachenfliegen, Zip-Futter, Wildwasser-Rafting, Reiten, Wandern, in der Nähe von historischen Städten und Weltkulturerbestätten.
+        translated by Google
+        Surrounded by beautiful rainforest plants, strategically placed for privacy, with an outdoor shower in a garden. Commune with nature, listen to crickets and night and birds in the morning.
+        Situated on a small organic farm. We grow tropical fruits and trees, flowers, with aloe vera as our main crop. There is an enchanting pathway through our bamboo forest, leading down to a mountain stream and a small waterfall. Near many coffee region tours and attractions, including our own organic farming workshops, visiting a nearby bee farm where our neighbor propagates bees in danger of extinction, local coffee tours, butterfly emporium, hang gliding, zip lining, white water rafting, horseback riding, hiking, visiting nearby historic towns and world heritage sites.
+
+        Interaktion mit Gästen
+
+        Wir bieten Frühstück täglich, im Zimmerpreis inbegriffen, helfen, Touren zu planen und Reservierungen vorzunehmen, zu planen und zu erleichtern Transport, andere Mahlzeiten vor Ort angeboten werden, sowie Flughafen-oder Bus-Terminal Pick-up. (20mil Pesos) Wir werden dafür sorgen, dass du dich darum kümmerst und hilfst mit dem, was du brauchst.
+        translated by Google
+        We offer breakfast daily, included in the room price, help to plan tours and make reservations, help to plan and facilitate transportation, other meals on site are offered, as well as airport or bus terminal pick-up. (20mil pesos) We will make sure you feel taken care of and have help with whatever needs you have.
+
+        Weitere wichtige Infos
+
+        Yudy ist ein guter Koch und zusätzlich zu einem Frühstück Ihrer Wahl, bietet sie Mittagessen oder Abendessen für 20 Mil Pesos pro Person. Das King-Size-Bett kann in 2 Zwillinge getrennt werden.
+        translated by Google
+        Yudy is a good cook and in addition to a breakfast of your choice, she offers lunches or dinners for 20 mil pesos per person.
+
+        The King size bed can be separated into 2 twins.
+
+        Kontaktiere den Gastgeber
+        <br>
+
+        <div class="button-column">
+
+          <div class="page-wrapper">
+
+            <div class="btn btn-default">
+                <%= link_to 'Create new booking for this space', new_space_booking_path(@space) %>
+            </div>
+
+            <br>
+
+            <div class="btn btn-default">
+              <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
+            </div>
+
+            <br>
+
+            <div class="btn btn-default">
+              <%= link_to 'Back to Spaces#Index', spaces_path %>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
