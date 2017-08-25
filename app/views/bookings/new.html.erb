@@ -3,19 +3,19 @@
   <h1>Book now!</h1>
 
 
-  <div class="container-form">
+  <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-7">
-        <div class="image-cover" style="background-image:  url(<%= image_path 'eventspaces/exp1' %>);">
-        </div>
-      </div>
 
-      <div class="col-xs-12 col-md-4" id="booking-form">
+      <div class="col-xs-10 col-xs-offset-1" id="booking-form">
         <%= simple_form_for([@space, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date %>
-          <%= f.input :end_date, as: :date %>
-          <%= f.submit class: "btn btn-default btn-submit" %>
+          <%= f.input :start_date, as: :date, :wrapper_html => { :id => 'start' } %>
+          <%= f.input :end_date, as: :date, :wrapper_html => { :id => 'end' } %>
+          <%= f.submit class: "btn btn-default btn-submit", :wrapper_html => { :id => 'button1' } %>
         <% end %>
+
+<p class="btn btn-default" id="button">
+  click
+</p>
 
       </div>
     </div>
@@ -24,3 +24,8 @@
   <div class="btn btn-default margin-top">
   <%= link_to 'See all spaces', spaces_path %>
   </div>
+
+  <h5><strong>Price per hour: </strong><%= @space.price_per_day %></h5>
+  <h5><strong>Price per day: </strong><%= @booking.start_date %></h5>
+
+
