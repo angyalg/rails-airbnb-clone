@@ -1,6 +1,6 @@
 // This JS is for the subtitle on the homepage
 
-const prefix = "Using Spacey, I explore ";
+const prefix = "Explore ";
 const skills = [
   "work spaces",
   "creative spaces",
