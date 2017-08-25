@@ -1,0 +1,38 @@
+.button-fb {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-fb {
+  color: white;
+  background-color: #3b5998;
+  font-weight: 600;
+  margin-top: 15px !important;
+}
+
+.btn-fb:hover {
+    color: #fff;
+    background-color: #000000;
+    border-color: #1e6eb2;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.margin-bot {
+  margin-bottom: 15px;
+}
+
+.btn-submit {
+
+  background-color: #39ab42;
+  color: white;
+}
+
+.btn-submit:hover{
+    background-color: #39ab49;
+    color: white;
+}
+
