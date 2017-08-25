@@ -7,33 +7,37 @@
 
         <h1>Explore our Catalogue</h1>
 
-        <% @spaces.each do |space| %>
+        <% if @spaces.any? %>
+          <% @spaces.each do |space| %>
 
-          <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6">
 
-            <% if space.photos? %>
+              <% if space.photos? %>
 
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path space.photos.first.path, height: 300, width: 400, crop: :fill %>')"></div>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path space.photos.first.path, height: 300, width: 400, crop: :fill %>')"></div>
 
-            <% else %>
+              <% else %>
 
               <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'eventspaces/exp1' %>);"></div>
 
-            <% end %>
+              <% end %>
 
-            <%= link_to space_path(space), class: "card-link" do %>
-            <% end %>
+              <%= link_to space_path(space), class: "card-link" do %>
+              <% end %>
 
-            <div class="card-category">
-              <%= space.category.capitalize %> space
+              <div class="card-category">
+                <%= space.category.capitalize %> space
+              </div>
+
+              <div class="infobox"></div>
+              <span class="headline"><%= space.price_per_day %>€</span>
+              <span class="headline"><%= space.name %></span>
+
             </div>
 
-            <div class="infobox"></div>
-            <span class="headline"><%= space.price_per_day %>€</span>
-            <span class="headline"><%= space.name %></span>
-
-          </div>
-
+          <% end %>
+        <% else %>
+          <p>Sorry, we couldn't find any space what meets with your criterias.</p>
         <% end %>
 
       </div>

@@ -6,16 +6,17 @@
 
     <div class="form-inline">
       <%= simple_form_for(:search, method: 'get', url: spaces_path, html: { class: "form-inline-search" }) do |f| %>
-        <%= f.input :start_date, as: :date, html5: true, label: false %>
-        <%= f.input :end_date, as: :date, html5: true, label: false %>
-        <%= f.input :location, html5: true, label_html: { class: "location_input" }, label: false, placeholder: "Location" %>
-        <%= f.input :category, collection: Space.select(:category).map(&:category).uniq, prompt: 'Choose one', label: false %>
-        <%= f.button :submit, 'Search' %>
+      <%= f.input :start_date, as: :date, html5: true, label: false %>
+      <%= f.input :end_date, as: :date, html5: true, label: false %>
+      <%= f.input :location, html5: true, label_html: { class: "location_input" }, label: false, placeholder: "Location" %>
+      <%= f.input :category, collection: Space.select(:category).map(&:category).uniq, prompt: 'Choose one', label: false %>
+      <%= f.button :submit, 'Search' %>
       <% end %>
     </div>
   </div>
 </div>
 
+<%= link_to spaces_path(:search => { category: "work"}) do %>
 <div class="container">
   <!-- Normal Demo-->
   <div class="column">
@@ -35,7 +36,9 @@
       </div>
     </div>
   </div>
+  <% end %>
 
+  <%= link_to spaces_path(:search => { category: "creative"}) do %>
   <div class="column">
     <div class="demo-title"></div>
     <!-- Post-->
@@ -53,7 +56,9 @@
       </div>
     </div>
   </div>
+  <% end %>
 
+  <%= link_to spaces_path(:search => { category: "event"}) do %>
   <div class="column">
     <div class="demo-title"></div>
     <!-- Post-->
@@ -71,7 +76,9 @@
       </div>
     </div>
   </div>
+  <% end %>
 
+  <%= link_to spaces_path(:search => { category: "retail"}) do %>
   <div class="column">
     <div class="demo-title"></div>
     <!-- Post-->
@@ -89,6 +96,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
-  </div>
+</div>
 

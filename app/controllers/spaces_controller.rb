@@ -1,11 +1,11 @@
 class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   def index
-    # unless params[:search]
-    #   @spaces = Space.all
-    # end
+    unless params[:search]
+      @spaces = Space.all
+    end
 
-    unless params[:search].nil?
+    unless params[:search][:start_date].nil?
 
       begin
         start_date = Date.parse(params[:search][:start_date])
@@ -25,6 +25,11 @@ class SpacesController < ApplicationController
         @spaces = @spaces.select { |space| space.address == params[:search][:location].capitalize }
       end
 
+    else
+      @spaces = Space.all
+    end
+
+    unless params[:search][:category].nil?
       unless params[:search][:category].empty?
         @spaces = @spaces.select { |space| space.category == params[:search][:category] }
       end
