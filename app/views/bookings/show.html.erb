@@ -1,9 +1,7 @@
-<h1>Bookings#Show</h1>
+<h1 class="underline">Your Booking</h1>
 
-<p>start_date: <%= @booking.start_date %></p>
-<p>end_date: <%= @booking.end_date %></p>
-<p>status: <%= @booking.status %></p>
-<p>space_id: <%= @booking.space_id %></p>
-<p>user_id: <%= @booking.user_id %></p>
+<h4>From: <strong><%= @booking.start_date %></strong></h4>
+<h4>To <strong><%= @booking.end_date %></strong></h4>
+
 
 <%= link_to 'Show all', space_bookings_path %>
