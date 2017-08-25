@@ -36,6 +36,9 @@ gem 'devise'
 # facebook login
 gem 'omniauth-facebook'
 
+#date-picker
+gem 'bootstrap-datepicker-rails'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

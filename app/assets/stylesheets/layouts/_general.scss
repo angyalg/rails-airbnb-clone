@@ -1,3 +1,25 @@
+
 html, body {
   height: 100%;
+}
+
+body {
+  padding-top: 70px;
+  text-align: center;
+}
+
+
+
+a {
+  color: #333333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Volkhov', cursive;
+  font-size: 4em;
 }
