@@ -16,12 +16,10 @@
 <!-- Inside Form to get the same size as input fields (buttons with the links) -->
       <div class="button-column">
       <!-- Sign up Button-->
-          <%= f.button :submit, "Sign up", class: "btn btn-danger" %>
+          <%= f.button :submit, "Sign up", class: "btn btn-danger btn-block" %>
           <%= render "devise/shared/fblink"%>
+          <%= render "devise/shared/links" %>
       </div>
-    </div>
-    <div class="button-column">
-        <%= render "devise/shared/links" %>
     </div>
   </div>
   <% end %>
