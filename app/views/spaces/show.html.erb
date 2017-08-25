@@ -7,63 +7,91 @@
 
 
 
-        <% if @space.photos? %>
-          <div>
-            <% @space.photos.each do |photo| %>
-              <%= link_to cl_image_path(photo.path, height: 500, width: 500, crop: :fill), class: "swipebox" do %>
-                <%= cl_image_tag photo.path, height: 310, width: 310, crop: :fill %>
+        <div id="image-box">
+          <% if @space.photos? %>
+              <% @space.photos.each do |photo| %>
+                <div class="photo">
+                  <%= link_to cl_image_path(photo.path, height: 500, width: 500, crop: :fill), class: "swipebox" do %>
+                    <%= cl_image_tag photo.path, height: 325, width: 325, crop: :fill %>
+                  <% end %>
+                </div>
               <% end %>
-            <% end %>
-          </div>
-        <% else %>
-          <div><%= image_tag 'eventspaces/exp1', class: "image_wide" %></div>
-        <% end %>
+          <% else %>
+            <div class="photo">
+              <div><%= image_tag 'eventspaces/exp1', class: "image_wide" %></div>
+            </div>
+          <% end %>
 
-        <div class="page-header">
-          <h2><%= @space.name %></h2>
         </div>
 
-        <div class="space-stats">
+        <div id="text-box">
 
-          <div class="space-stat">
-            <i class="fa fa-users" aria-hidden="true"></i><h5><%= @space.max_capacity %></h5>
+          <div class="page-header">
+            <h2 id="header"><%= @space.name %></h2>
           </div>
 
-          <div class="space-stat">
-              <i class="fa fa-eur price-tag" aria-hidden="true"></i><h5><%= @space.price_per_day %></h5>
+           <div>
+            <h4 id="page-category">Best suited for: <%=@space.category.capitalize %></h4>
           </div>
 
-          <div class="space-stat">
-            <%= image_tag "https://www.fillmurray.com/50/50", class: "img-circle" %>
+          <div class="space-stats">
+
+            <div class="space-stat">
+              <h5>Capacity: <br>
+              <%= @space.max_capacity %>
+              <i class="fa fa-users" aria-hidden="true"></i></h5>
+            </div>
+
+            <div class="space-stat">
+              <h5>Rate: <br>
+              <%=@space.price_per_day %>
+              <i class="fa fa-eur price-tag" aria-hidden="true"></i></h5>
+            </div>
+
+            <div class="space-stat">
+              <!--Rating, Replace with real ratings later-->
+              <h5>Rating: <br>
+              <% (3..5).to_a.sample.times do %>
+                <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
+              <% end %></h5>
+            </div>
+
           </div>
 
-          <div class="space-stat btn btn-default">
-            <%= link_to 'Book your Spacey!', new_space_booking_path(@space) %>
+          <div class="text-box-card">
+            <h5>Host Details</h5>
+
+            <div class="card-avatar">
+              <%= image_tag "https://www.fillmurray.com/50/50", class: "img-circle" %>
+            </div>
+
+            <div><%= @space.name %> does offer further amenities like Catering should you require so. we have been in the Event Business for 16 years now!<p>
+
+            </p></div>
+
+            <div id="Booking-Button" class="space-stat btn btn-default">
+              <%= link_to 'Book your Spacey!', new_space_booking_path(@space) %>
+            </div>
           </div>
+
+          <h5>Description: </h5>
+          <p><%= @space.description %></p>
         </div>
-
-        <!--Rating, Replace with real ratings later-->
-        <% (3..5).to_a.sample.times do %>
-        <span> <%= image_tag "cards/colouredstar", class: "card-review" %></span>
-        <% end %>
-
-        <p>Description: </p>
-        <p><%= @space.description %></p>
 
         <br>
 
-        <div class="button-column">
+        <div class="button-column-show">
 
-          <div class="page-wrapper">
+          <div class="page-wrapper button-inline">
 
-            <div class="btn btn-default">
-              <%= link_to 'All bookings for this space', space_bookings_path(@space)  %>
+            <div class="btn btn-default button-margin">
+              <%= link_to 'All bookings for this Spacey', space_bookings_path(@space)  %>
             </div>
 
             <br>
 
-            <div class="btn btn-default">
-              <%= link_to 'Back to Spaces#Index', spaces_path %>
+            <div class="btn btn-default button-margin">
+              <%= link_to 'Back to all Spaceys', spaces_path %>
             </div>
 
           </div>

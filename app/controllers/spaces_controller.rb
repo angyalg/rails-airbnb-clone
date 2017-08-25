@@ -1,43 +1,49 @@
 class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   def index
-    unless params[:search]
-      @spaces = Space.all
-    end
+    # unless params[:search]
+    #   @spaces = Space.all
+    # end
 
-    unless params[:search][:start_date].nil?
+    unless params[:search].nil?
 
-      begin
-        start_date = Date.parse(params[:search][:start_date])
-        end_date = Date.parse(params[:search][:end_date])
-      rescue ArgumentError
+      unless params[:search][:start_date].nil?
+        unless params[:search][:start_date].empty?
+          begin
+            start_date = Date.parse(params[:search][:start_date])
+            end_date = Date.parse(params[:search][:end_date])
+          rescue ArgumentError
 
-      end
+          end
 
-      if (start_date.is_a?(Date) && end_date.is_a?(Date))
-        @date_selected_spaces = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', start_date, end_date)
-        @spaces = (@spaces.nil? ? Space.all : @spaces) - @date_selected_spaces
+          if (start_date.is_a?(Date) && end_date.is_a?(Date))
+            @date_selected_spaces = Space.joins(:bookings).where.not('start_date > ? OR end_date < ?', start_date, end_date)
+            @spaces = (@spaces.nil? ? Space.all : @spaces) - @date_selected_spaces
+          end
+        else
+          @spaces = Space.all
+        end
       else
         @spaces = Space.all
       end
 
-      unless params[:search][:location].empty?
-        @spaces = @spaces.select { |space| space.address == params[:search][:location].capitalize }
+
+      unless params[:search][:location].nil?
+        unless params[:search][:location].empty?
+          @spaces = @spaces.select { |space| space.address == params[:search][:location].capitalize }
+        end
+      end
+
+
+      unless params[:search][:category].nil?
+        unless params[:search][:category].empty?
+          @spaces = @spaces.select { |space| space.category == params[:search][:category] }
+        end
       end
 
     else
       @spaces = Space.all
     end
-
-    unless params[:search][:category].nil?
-      unless params[:search][:category].empty?
-        @spaces = @spaces.select { |space| space.category == params[:search][:category] }
-      end
-    else
-      @spaces = Space.all
-    end
-
-
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude

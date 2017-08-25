@@ -1,15 +1,89 @@
 .space-stats {
-  margin:30px;
+  margin:0px;
   display:flex;
   flex-direction:row;
+  justify-content: space-between;
   width:300px;
   height:80px;
-  padding:5px;
-
+  padding:0px;
 }
 
 .space-stat {
   flex:1 1 auto;
-  text-align:center;
-  margin:5px;
+  text-align:left;
+  margin:0px;
+}
+
+#page-category {
+  margin-top: 0px;
+}
+
+.page-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+.button-column-show {
+  display: flex;
+  justify-content: center;
+}
+
+.button-inline {
+  flex-direction:row;
+}
+
+.button-margin {
+  margin-right: 10px;
+}
+
+#image-box {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.photo {
+  border: solid rgb(75, 75, 75);
+  box-shadow: 1px 3px 1px rgb(220, 220, 220);
+}
+
+#text-box {
+  position: relative;
+  border: solid $border-gray;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 2px 2px rgb(235, 235, 235);
+}
+
+#header {
+  margin-top: 0px;
+}
+
+.text-box-card {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  border: solid $border-gray;
+  background-color: white;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.card-avatar{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+#Booking-Button {
+  width: 180px;
 }
