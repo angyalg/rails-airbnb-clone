@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
+gem 'swipebox'
+
 gem 'faker'
 
 gem "geocoder"
