@@ -1,3 +1,10 @@
+#fancy-title {
+  opacity: 1 !important;
+  font-family: Inconsolata, source code pro, consolas, monospace;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .banner {
   color: white;
   text-align: center;
@@ -20,7 +27,6 @@
   font-size: 25px;
   font-weight: lighter;
   color: rgb(255, 255, 255);
-  opacity: 0.6;
   margin-bottom: 30px;
 }
 
