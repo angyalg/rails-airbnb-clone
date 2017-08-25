@@ -10,6 +10,7 @@
         <%= simple_form_for([@space, @booking]) do |f| %>
           <%= f.input :start_date, as: :date, :wrapper_html => { :id => 'start' } %>
           <%= f.input :end_date, as: :date, :wrapper_html => { :id => 'end' } %>
+          <h5><strong>Price per day: </strong><%= @space.price_per_day %></h5>
           <%= f.submit class: "btn btn-default btn-submit", :wrapper_html => { :id => 'button1' } %>
         <% end %>
 
@@ -21,7 +22,7 @@
   <%= link_to 'See all spaces', spaces_path %>
   </div>
 
-  <h5><strong>Price per day: </strong><%= @space.price_per_day %></h5>
+
 
 
 
